@@ -30,7 +30,7 @@ defmodule Warehouse.Deliverator do
     {:noreply, state}
   end
 
-  def deliver([]), do: Process.exit(self(), :normal)
+  def deliver([]), do: send(Receiver, {:deliverator_idle, self()}) # Process.exit(self(), :normal)
   def deliver([package | remaining_packages]) do
     IO.puts "Deliverator #{inspect self()} delivering #{inspect package}"
     make_delivery()
