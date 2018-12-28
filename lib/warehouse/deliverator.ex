@@ -33,7 +33,7 @@ defmodule Warehouse.Deliverator do
   def deliver([]), do: send(Receiver, {:deliverator_idle, self()}) # Process.exit(self(), :normal)
   def deliver([package | remaining_packages]) do
     IO.puts "Deliverator #{inspect self()} delivering #{inspect package}"
-    make_delivery()
+    # make_delivery()
 
     # send() is used to send message to other processes. (Receiver)
     send(Receiver, {:package_delivered, package})

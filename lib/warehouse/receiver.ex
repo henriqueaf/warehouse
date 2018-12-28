@@ -7,7 +7,7 @@ defmodule Warehouse.Receiver do
   Warehouse.Receiver will store all assignments.
   """
 
-  def start_link do
+  def start_link() do
     # Will be used just one for the whole application, so we use 'name: __MODULE__' to generate
     # only one Receiver GenServer and it will have the module name 'Warehouse.Receiver'.
     GenServer.start_link(__MODULE__, [], name: __MODULE__)
@@ -15,12 +15,6 @@ defmodule Warehouse.Receiver do
 
   @doc """
   Initiates assignments with empty list.
-
-  ## Examples
-
-    iex> :sys.get_state(Warehouse.Receiver)
-    %{assignments: [], batch_size: #{@batch_size}, delivered_packages: [], packages_buffer: []}
-
   """
   def init(_) do
     state = %{
